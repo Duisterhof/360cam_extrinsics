@@ -1,0 +1,192 @@
+{
+    "dataset_name":"Ver1_3Cam",
+    "storage_path":"/data/Preprocessed",
+    "raw_environment_dirs":[
+        "/data/AbandonedCable_Windows",
+        "/data/AbandonedFactory2_Windows",
+        "/data/AbandonedSchool_Windows"
+    ],
+    "camera_models": {
+        "cam_model_0": {
+            "type": "DoubleSphere",
+            "xi": -0.203,
+            "alpha":  0.589,
+            "fx": 232.0,
+            "fy": 232.0,
+            "cx": 612,
+            "cy": 514,
+            "fov_degree": 195,
+            "shape_struct": {"H": 1028, "W": 1224},
+            "in_to_tensor": true,
+            "out_to_numpy": false
+        },
+        "rot_gt_panorama_0": {
+            "type": "Equirectangular",
+            "shape_struct": {"H": 1024, "W": 2048},
+            "longitude_span": [ -4.71238898038469, 1.5707963267948966 ],
+            "open_span":false,
+            "in_to_tensor": true,
+            "out_to_numpy": false
+        }
+    },
+    "__comment__": "The raw_camera must be consistent with the directory names in the raw data. ",
+    "__comment2__": "The raw_camera must be consistent with the metadata, because the mvs model's grid maker builder relies on this. ",
+    "samplers": [
+        {
+            "description": "cam0 fisheye RGB sampler",
+            "table_header": "cam0_rgb_fisheye",
+            "raw_camera": "cam0",
+            "raw_image_suffix": "CubeScene",
+            "output_dir": "cam0",
+            "output_image_suffix": "Fisheye",
+            "image_reader": "rgb",
+            "interpolation": "linear",
+            "write_valid_mask": true,
+            "mvs_main_cam_model_for_cam": true,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "cam_model_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                        -1.0,  0.0,  0.0,
+                         0.0,  1.0,  0.0,
+                         0.0,  0.0, -1.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        },
+        {
+            "description": "cam1 fisheye RGB sampler",
+            "table_header": "cam1_rgb_fisheye",
+            "raw_camera": "cam1",
+            "raw_image_suffix": "CubeScene",
+            "output_dir": "cam1",
+            "output_image_suffix": "Fisheye",
+            "image_reader": "rgb",
+            "interpolation": "linear",
+            "write_valid_mask": true,
+            "mvs_main_cam_model_for_cam": true,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "cam_model_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                        -1.0,  0.0,  0.0,
+                         0.0,  1.0,  0.0,
+                         0.0,  0.0, -1.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        },
+        {
+            "description": "cam2 fisheye RGB sampler",
+            "table_header": "cam2_rgb_fisheye",
+            "raw_camera": "cam2",
+            "raw_image_suffix": "CubeScene",
+            "output_dir": "cam2",
+            "output_image_suffix": "Fisheye",
+            "image_reader": "rgb",
+            "interpolation": "linear",
+            "write_valid_mask": true,
+            "mvs_main_cam_model_for_cam": true,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "cam_model_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                        -1.0,  0.0,  0.0,
+                         0.0,  1.0,  0.0,
+                         0.0,  0.0, -1.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        },
+        {
+            "description": "rig rotated panorama RGB sampler",
+            "table_header": "rig_rgb_pano",
+            "raw_camera": "cam0",
+            "raw_image_suffix": "CubeScene",
+            "output_dir": "rig",
+            "output_image_suffix": "CubeScene",
+            "image_reader": "rgb",
+            "interpolation": "linear",
+            "write_valid_mask": false,
+            "mvs_main_cam_model_for_cam": false,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "rot_gt_panorama_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                         1.0,  0.0,  0.0,
+                         0.0,  0.0, -1.0,
+                         0.0,  1.0,  0.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        },
+        {
+            "description": "rig rotated panorama distance sampler",
+            "table_header": "rig_dist_pano",
+            "raw_camera": "cam0",
+            "raw_image_suffix": "CubeDistance",
+            "output_dir": "rig",
+            "output_image_suffix": "CubeDistance",
+            "image_reader": "compressed_float",
+            "interpolation": "nearest",
+            "write_valid_mask": false,
+            "mvs_main_cam_model_for_cam": false,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "rot_gt_panorama_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                         1.0,  0.0,  0.0,
+                         0.0,  0.0, -1.0,
+                         0.0,  1.0,  0.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        },
+        {
+            "description": "rig fisheye distance sampler",
+            "table_header": "rig_dist_fisheye",
+            "raw_camera": "cam0",
+            "raw_image_suffix": "CubeDistance",
+            "output_dir": "rig",
+            "output_image_suffix": "FisheyeDistance",
+            "image_reader": "compressed_float",
+            "interpolation": "nearest",
+            "write_valid_mask": true,
+            "mvs_main_cam_model_for_cam": false,
+            "sampler": {
+                "type": "FullViewRotation",
+                "cam_model_key": "cam_model_0",
+                "orientation": {
+                    "type": "rotation_matrix",
+                    "data": [
+                        -1.0,  0.0,  0.0,
+                         0.0,  1.0,  0.0,
+                         0.0,  0.0, -1.0
+                    ],
+                    "f0": "cpf",
+                    "f1": "fisheye"
+                }
+            }
+        }
+    ]
+}

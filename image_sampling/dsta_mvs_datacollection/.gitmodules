@@ -1,0 +1,9 @@
+[submodule "data_collection/mvs_utils"]
+	path = data_collection/mvs_utils
+	url = git@github.com:castacks/mvs_utils.git
+[submodule "data_collection/image_sampler"]
+	path = data_collection/image_sampler
+	url = git@github.com:castacks/image_sampler.git
+[submodule "data_collection/multiproc"]
+	path = data_collection/multiproc
+	url = git@github.com:castacks/python_multiproc.git

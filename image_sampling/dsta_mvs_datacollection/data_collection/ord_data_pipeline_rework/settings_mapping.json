@@ -1,0 +1,57 @@
+{
+  "SeeDocsAt": "https://github.com/Microsoft/AirSim/blob/master/docs/settings.md",
+  "SettingsVersion": 1.2, 
+  "Comment": "SimMode: Multirotor",
+  "SimMode" : "ComputerVision", 
+  "ViewMode": "",
+  "ClockSpeed": 1.0, 
+  "CameraDefaults": {
+    "CaptureSettings": [
+      {
+        "ImageType": 0,
+        "Width": 320,
+        "Height":320,
+        "FOV_Degrees": 90,
+        "AutoExposureSpeed": 10,
+        "AutoExposureBias": 0,
+        "AutoExposureMaxBrightness": 0.84,
+        "AutoExposureMinBrightness": 0.03,
+        "MotionBlurAmount": 0,
+        "TargetGamma": 0.0,
+        "ProjectionMode": "",
+        "OrthoWidth": 5.12, 
+        "Gimbal_Control": false 
+      }, 
+      {
+        "ImageType": 1,
+        "Width": 320,
+        "Height": 320,
+        "FOV_Degrees": 95
+      }, 
+      {
+        "ImageType": 2,
+        "Width": 320,
+        "Height": 320,
+        "FOV_Degrees": 95
+      },
+      {
+        "ImageType": 3,
+        "Width": 320,
+        "Height": 320,
+        "FOV_Degrees": 95
+      },
+      {
+        "ImageType": 4,
+        "Width": 320,
+        "Height": 320,
+        "FOV_Degrees": 95
+      },
+      {
+        "ImageType": 5,
+        "Width": 320,
+        "Height": 320,
+        "FOV_Degrees": 95
+      }
+    ]
+  }
+}

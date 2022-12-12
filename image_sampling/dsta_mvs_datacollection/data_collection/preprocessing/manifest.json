@@ -1,0 +1,100 @@
+{
+    "dataset_name":"Ver1_3Cam_RigRotated_CODETEST",
+    "storage_path":"/mnt/x/ProcessedData",
+    "processing_manifest": {
+        "training": {
+            "datasets": ["/mnt/x/OPR_DataCollection/CoalMine_Windows/P001", 
+                         "/mnt/x/OPR_DataCollection/DesertGasStation_Windows/P001",
+                         "/mnt/x/OPR_DataCollection/Supermarket_Windows/P001",
+                         "/mnt/x/OPR_DataCollection/ScanPoplarandAspen_Windows/P001",
+                         "/mnt/x/OPR_DataCollection/JapaneseCity_Windows/P001", 
+                         "/mnt/x/OPR_DataCollection/AbandonedFactory2_Windows/P001", 
+                         "/mnt/x/OPR_DataCollection/AbandonedCable_Windows/P001"]},
+         "testing": {
+            "datasets": ["/mnt/x/OPR_DataCollection/ScanPoplarandAspenWinter_Windows/P001", 
+                         "/mnt/x/OPR_DataCollection/AmericanDiner_Windows/P001"]}},
+    "camera_models": {
+        "cam_model_0": {
+            "type": "DoubleSphere",
+            "xi": -0.203,
+            "alpha":  0.589,
+            "fx": 232.0,
+            "fy": 232.0,
+            "cx": 612.5,
+            "cy": 513.5,
+            "fov_degree": 195,
+            "shape_struct": {"H": 1024, "W": 1228},
+            "in_to_tensor": true,
+            "out_to_numpy": false
+        },
+	"rot_gt_panorama_0": {
+            "type": "Equirectangular",
+            "cx": 1024,
+            "cy": 512,
+            "lon_shift":-1.57079632679,
+            "open_span":false,
+            "shape_struct": {"H": 1024, "W": 2048},
+            "in_to_tensor": true,
+            "out_to_numpy": false
+        }
+    },
+    "__comment__": "The keys of samplers must be consistent with the camera names in the metadata file. ",
+    "samplers": {
+        "cam0": {
+            "type": "FullViewRotation",
+            "cam_model_key": "cam_model_0",
+            "orientation": {
+                "type": "rotation_matrix",
+                "data": [
+                    -1.0,  0.0,  0.0, 
+                     0.0,  1.0,  0.0, 
+                     0.0,  0.0, -1.0
+                ],
+                "f0": "cpf",
+                "f1": "fisheye"
+            }
+        },
+        "cam1": {
+            "type": "FullViewRotation",
+            "cam_model_key": "cam_model_0",
+            "orientation": {
+                "type": "rotation_matrix",
+                "data": [
+                    -1.0,  0.0,  0.0, 
+                     0.0,  1.0,  0.0, 
+                     0.0,  0.0, -1.0
+                ],
+                "f0": "cpf",
+                "f1": "fisheye"
+            }
+        },
+        "cam2": {
+            "type": "FullViewRotation",
+            "cam_model_key": "cam_model_0",
+            "orientation": {
+                "type": "rotation_matrix",
+                "data": [
+                    -1.0,  0.0,  0.0, 
+                     0.0,  1.0,  0.0, 
+                     0.0,  0.0, -1.0
+                ],
+                "f0": "cpf",
+                "f1": "fisheye"
+            }
+        },
+        "rig": {
+            "type": "FullViewRotation",
+            "cam_model_key": "rot_gt_panorama_0",
+            "orientation": {
+                "type": "rotation_matrix",
+                "data": [
+                     1.0,  0.0,  0.0, 
+                     0.0,  0.0, -1.0, 
+                     0.0,  1.0,  0.0
+                ],
+                "f0": "cpf",
+                "f1": "fisheye"
+            }
+        }
+    }
+}

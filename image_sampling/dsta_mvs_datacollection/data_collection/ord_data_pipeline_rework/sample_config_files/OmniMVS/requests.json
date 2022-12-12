@@ -1,0 +1,8 @@
+{
+	"OldTown":{
+		"envdir":"X:\\UnrealProjects\\MVS\\OldTown_4.27.2\\WindowsNoEditor",
+		"trajdir":"X:\\dsta_mvs_data\\005_OmniMVSSunnySingle_frame_graph\\Trajectories",
+		"stepsz":1,
+		"as_six_imgs":false
+	}
+}

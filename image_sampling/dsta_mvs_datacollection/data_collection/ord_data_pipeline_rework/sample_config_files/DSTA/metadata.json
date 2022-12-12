@@ -1,0 +1,21 @@
+{
+    "cams": [
+        {
+            "img_types": [ "CubeScene" ],
+            "airsim_cam_nums": [0],
+            "frame": "cbf0"
+        },
+        {
+            "img_types": [ "CubeScene" ],
+            "airsim_cam_nums": [0],
+            "frame": "cbf1"
+        },
+        {
+            "img_types": [ "CubeScene" ],
+            "airsim_cam_nums": [0],
+            "frame": "cbf2"
+        }
+    ],
+    "rig_img_types": [ "CubeScene", "CubeDistance" ],
+    "randomize_orientation": false
+}

@@ -1,0 +1,19 @@
+cam0:
+  cam_overlaps: []
+  camera_model: ds
+  distortion_coeffs: []
+  distortion_model: none
+  intrinsics: [-0.19612934304934476, 0.5927113343536186, 469.44736287527536, 468.9692523570489, 1242.7985676327319, 1031.1776851780146]
+  resolution: [2448, 2048]
+  rostopic: /camera_image0
+  fov: 195
+
+cam1:
+  cam_overlaps: []
+  camera_model: ds
+  distortion_coeffs: []
+  distortion_model: none
+  intrinsics: [-0.19648940550097935, 0.5923223827560962, 468.5376807849608, 468.00443293618457, 1242.6655294504037, 1027.7233798933444]
+  resolution: [2448, 2048]
+  rostopic: /camera_image1
+  fov: 195
