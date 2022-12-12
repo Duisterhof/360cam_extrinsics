@@ -22,7 +22,7 @@ class FeatureExtractor:
             self.imgscam0.append(cv2.imread(cam0_path,cv2.IMREAD_GRAYSCALE))
             self.imgscam1.append(cv2.imread(self.cam1_imgpaths[i],cv2.IMREAD_GRAYSCALE))
 
-    def extract_features(self,descriptor = 'SIFT'):
+    def extract_features(self,descriptor = 'SIFT',n_points=12):
 
         self.cam0_coords = []
         self.cam1_coords = []
@@ -50,9 +50,33 @@ class FeatureExtractor:
                 # cv.drawMatchesKnn expects list of lists as matches.
                 img3 = cv2.drawMatchesKnn(img0,kp1,img1,kp2,good,None,flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
                 self.imgs3.append(img3)
-    
+        
+        elif (descriptor == 'manual'):
+            print("selecting points manually")
+            fig, ax = plt.subplots(1,2)
+            ax[0].imshow(self.imgscam0[0],cmap='gray')
+            ax[1].imshow(self.imgscam1[0],cmap='gray')
+            plt.waitforbuttonpress()
+
+            self.cam0_coords = []
+            self.cam1_coords = []
+
+            while len(self.cam1_coords) < n_points:
+                point = np.asarray(plt.ginput(1, timeout=-1))[0]
+                
+                if len(self.cam0_coords) > len(self.cam1_coords):
+                    self.cam1_coords.append(point)
+                    ax[1].scatter(point[0],point[1],s=50,color='green')
+                else:
+                    self.cam0_coords.append(point)
+                    ax[0].scatter(point[0],point[1],s=50,color='green')
+            
+            
         self.cam0_coords = np.array(self.cam0_coords).T 
         self.cam1_coords = np.array(self.cam1_coords).T
+
+        np.save('cam0_pts.npy',self.cam0_coords)
+        np.save('cam1_pts.npy',self.cam1_coords)
 
     def vis_features(self):
         for img3 in self.imgs3:

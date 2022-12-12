@@ -51,7 +51,7 @@ class Essential_Optimizer:
         distances = np.array(distances)
         inliers = distances[distances<tol]
         self.latest_inliers = inliers.shape[0]/(self.num_points)
-
+        self.inlier_idxs = np.where(distances<tol)[0]
 
     def ransac_loop(self,tol,iterations,method='8'):
         self.best_inliers = 0
@@ -64,7 +64,6 @@ class Essential_Optimizer:
             self.compute_inliers(tol)
             if (self.latest_inliers > self.best_inliers):
                 self.best_inliers = self.latest_inliers
-                print(self.best_inliers)
                 self.best_E = self.E
         
             self.inliers.append(self.best_inliers)

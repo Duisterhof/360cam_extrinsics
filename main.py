@@ -16,18 +16,21 @@ cams.load_cams()
 
 extractor = FeatureExtractor(cam0_path,cam1_path)
 extractor.extract_features()
-extractor.vis_features()
+# extractor.vis_features()
 
 rays0 = cams.cams[0].pixel_2_ray(extractor.cam0_coords)[0].numpy().reshape((3,-1))
+rays0/= rays0[-1,:]
 rays1 = cams.cams[1].pixel_2_ray(extractor.cam1_coords)[0].numpy().reshape((3,-1))
+rays1/= rays1[-1,:]
 
 E_Class = Essential_Optimizer(rays0,rays1)
 E_Class.compute_system()
-# E_Class.full_lstsq()
-E_Class.ransac_loop(0.5,5000)
 E_Class.full_lstsq()
+E_Class.ransac_loop(0.5,5000)
+# E_Class.full_lstsq()
 E_Class.extract_motion()
 
+print("R: {0}, t: {1}".format(E_Class.R,E_Class.t))
 
 cam0_2_cam1 = pt.transform_from(E_Class.R,E_Class.t)
 
