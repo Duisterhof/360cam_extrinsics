@@ -36,12 +36,12 @@ class Essential_Optimizer:
 
         solution = np.linalg.lstsq(self.local_A,self.local_b)
         solution_vector = np.append(solution[0],[1.0])
-        self.F = solution_vector.reshape((3,3))
+        self.E = solution_vector.reshape((3,3))
 
 
     def compute_inliers(self,tol):
         # compute lines for all points using fundamental matrix
-        lines = self.F.dot(self.pts1.T)
+        lines = self.E.dot(self.pts1.T)
         distances = []
         for i, line in enumerate(lines.T):
             # print(line.shape)
@@ -59,17 +59,18 @@ class Essential_Optimizer:
         self.inliers = []
         for i in range(iterations):
             if method == '8':
-                self.compute_F_RANSAC_8()
-            elif method == '7':
-                self.compute_F_RANSAC_7()
+                self.compute_E_RANSAC_8()
 
             self.compute_inliers(tol)
             if (self.latest_inliers > self.best_inliers):
                 self.best_inliers = self.latest_inliers
-                self.best_F = self.F
                 print(self.best_inliers)
+                self.best_E = self.E
+        
             self.inliers.append(self.best_inliers)
     
+        self.E = self.best_E 
+
     def full_lstsq(self):
         solution = np.linalg.lstsq(self.A,self.b)
         solution_vector = np.append(solution[0],[1.0])
